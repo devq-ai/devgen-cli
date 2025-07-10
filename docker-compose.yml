@@ -1,0 +1,200 @@
+version: '3.8'
+
+services:
+  # DevGen CLI application
+  devgen:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: devgen-cli
+    volumes:
+      - .:/workspace
+      - devgen-config:/workspace/.devgen
+      - devgen-cache:/workspace/.cache
+    environment:
+      - DEVGEN_CONFIG_DIR=/workspace/.devgen
+      - DEVGEN_LOG_LEVEL=debug
+      - TERM=xterm-256color
+      - COLORTERM=truecolor
+    ports:
+      - "8080:8080"
+    networks:
+      - devgen-network
+    depends_on:
+      - postgres
+      - redis
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+
+  # PostgreSQL database for development
+  postgres:
+    image: postgres:15-alpine
+    container_name: devgen-postgres
+    environment:
+      POSTGRES_DB: devgen_db
+      POSTGRES_USER: devgen_user
+      POSTGRES_PASSWORD: devgen_password
+      POSTGRES_INITDB_ARGS: "--auth-host=scram-sha-256"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./sql/init:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    networks:
+      - devgen-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U devgen_user -d devgen_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # Redis cache for development
+  redis:
+    image: redis:7-alpine
+    container_name: devgen-redis
+    command: redis-server --appendonly yes --requirepass devgen_redis_password
+    volumes:
+      - redis-data:/data
+      - ./config/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6379:6379"
+    networks:
+      - devgen-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+
+  # Logfire mock server for development
+  logfire-mock:
+    image: wiremock/wiremock:latest
+    container_name: devgen-logfire-mock
+    command: --global-response-templating --verbose
+    volumes:
+      - ./mocks/logfire:/home/wiremock
+    ports:
+      - "9999:8080"
+    networks:
+      - devgen-network
+    environment:
+      - WIREMOCK_OPTIONS=--global-response-templating --verbose
+    restart: unless-stopped
+
+  # File watcher for development
+  file-watcher:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: devgen-watcher
+    volumes:
+      - .:/workspace
+    environment:
+      - DEVGEN_WATCH_MODE=true
+    networks:
+      - devgen-network
+    depends_on:
+      - devgen
+    profiles:
+      - development
+    restart: unless-stopped
+
+  # Documentation server
+  docs:
+    image: nginx:alpine
+    container_name: devgen-docs
+    volumes:
+      - ./docs:/usr/share/nginx/html:ro
+      - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "8081:80"
+    networks:
+      - devgen-network
+    profiles:
+      - documentation
+    restart: unless-stopped
+
+  # Monitoring and metrics (Prometheus + Grafana)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: devgen-prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    volumes:
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - devgen-network
+    profiles:
+      - monitoring
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: devgen-grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=devgen_grafana
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./config/grafana/provisioning:/etc/grafana/provisioning
+      - ./config/grafana/dashboards:/var/lib/grafana/dashboards
+    ports:
+      - "3001:3000"
+    networks:
+      - devgen-network
+    depends_on:
+      - prometheus
+    profiles:
+      - monitoring
+    restart: unless-stopped
+
+  # Load testing with K6
+  k6:
+    image: grafana/k6:latest
+    container_name: devgen-k6
+    volumes:
+      - ./tests/performance:/scripts
+      - k6-results:/results
+    networks:
+      - devgen-network
+    profiles:
+      - testing
+    command: run --out json=/results/result.json /scripts/load-test.js
+
+networks:
+  devgen-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  postgres-data:
+    driver: local
+  redis-data:
+    driver: local
+  devgen-config:
+    driver: local
+  devgen-cache:
+    driver: local
+  prometheus-data:
+    driver: local
+  grafana-data:
+    driver: local
+  k6-results:
+    driver: local
+
+# Development override file usage:
+# docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
