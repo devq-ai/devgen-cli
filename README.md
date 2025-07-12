@@ -1,256 +1,292 @@
-# DevGen CLI - MCP Server Management Tool
+# DevGen CLI - AI Development Platform
 
-DevGen is a powerful command-line interface for managing MCP (Model Context Protocol) servers with beautiful terminal UI powered by Charm libraries.
+DevGen CLI is a comprehensive command-line interface for AI developers working with Model Context Protocol (MCP) servers, knowledge bases, and AI development workflows. Built with elegant terminal UI powered by Charm libraries.
 
-## 🚀 Features
+## 🚀 Core Features
 
-- **Interactive Dashboard** - Beautiful terminal UI for real-time server monitoring
-- **Server Management** - Start, stop, and toggle MCP servers with simple commands
-- **Health Monitoring** - Check server status and health across all registered servers
-- **Registry Integration** - Works seamlessly with the Machina MCP Registry
-- **Terminal UI** - Built with Charm libraries for an elegant terminal experience
+- **🎛️ Interactive Dashboard** - Beautiful terminal UI for real-time MCP server monitoring and management
+- **🔌 MCP Server Management** - Toggle, monitor, and manage MCP servers with category-based organization
+- **🌐 Registry Integration** - Centralized server discovery through HTTP-based MCP Registry
+- **🔐 SSH Server** - Secure remote terminal access for public-facing deployments
+- **📊 Health Monitoring** - Real-time server status and health across all registered servers
+- **🎨 Modern Terminal UI** - Cyberpunk-inspired design with emoji indicators and clean layouts
 
 ## 📦 Installation
 
-### From Source
+### Quick Install
 
 ```bash
-# Clone and build
-git clone https://github.com/devq-ai/devqai.git
-cd devqai/devgen-cli
-make build
+# Clone the repository
+git clone https://github.com/devq-ai/devgen-cli.git
+cd devgen-cli
 
-# Install globally
-make install
+# Build and install
+make build
+make install-user
+
+# Add to PATH (add to your shell config)
+echo 'alias devgen="$HOME/.local/bin/devgen"' >> ~/.zshrc
+source ~/.zshrc
 ```
 
 ### Prerequisites
 
-- Go 1.23 or higher
-- Access to the Machina MCP Registry (`mcp_status.json`)
+- Go 1.21 or higher
+- Access to MCP servers configuration file (`mcp_status.json`)
 
-## 🔧 Usage
-
-### Basic Commands
+## 🎯 Quick Start
 
 ```bash
-# List all MCP servers
-devgen server list
-
-# Show status of a specific server
-devgen server status context7-mcp
-
-# Start a server
-devgen server start context7-mcp
-
-# Stop a server
-devgen server stop context7-mcp
-
-# Toggle server on/off
-devgen server toggle context7-mcp
-
-# Check health of all servers
-devgen server health
-```
-
-### Interactive Dashboard
-
-Launch the interactive terminal dashboard:
-
-```bash
+# Launch interactive dashboard
 devgen dashboard
+# or shorter alias
+devgen d
+
+# Show detailed help
+devgen help
+
+# Check version
+devgen --version
 ```
+
+## 🔧 Core Commands
+
+DevGen CLI provides four main commands with intuitive aliases:
+
+### 📊 Dashboard Command
+```bash
+devgen dashboard    # Launch interactive server dashboard
+devgen dash         # Alias
+devgen d            # Short alias
+```
+
+**Dashboard Features:**
+- Real-time server status with emoji category indicators
+- Interactive navigation (↑/↓ arrows or j/k keys)
+- Toggle servers on/off with Enter/Space
+- Single-column layout with text wrapping
+- Category-based organization (🧠 knowledge, ⚡ development, 🌐 web, etc.)
 
 **Dashboard Controls:**
-- `↑/↓` - Navigate server list
-- `Enter` - Toggle selected server on/off
-- `r` - Refresh server status
+- `↑/↓` or `j/k` - Navigate server list
+- `Enter/Space` - Toggle selected server on/off
 - `q` - Quit dashboard
 
-### Configuration
-
+### 🌐 Registry Command
 ```bash
-# Show current configuration
-devgen config show
+devgen registry status    # Check MCP Registry status
+devgen registry servers   # List all registered servers
+devgen registry tools     # Show available tools
+devgen registry start     # Start the registry server
 
-# Verify configuration file
-devgen config init
+# Aliases
+devgen reg status
+devgen r status
 ```
 
-## 🔌 MCP Server Registry
+**Registry Features:**
+- Centralized server discovery and management
+- HTTP API for integration (default: http://127.0.0.1:31337)
+- Real-time server registration and health monitoring
+- Tool aggregation across all registered servers
 
-DevGen works with the Machina MCP Registry which includes:
+### 🔐 SSH Command
+```bash
+devgen ssh                # Start SSH server on port 2222
+devgen ssh --ssh-port 3000 --ssh-host 0.0.0.0
 
-### Knowledge Servers
+# Aliases
+devgen server
+devgen remote
+```
+
+**SSH Features:**
+- Secure remote access to DevGen CLI
+- Essential for public-facing web deployments
+- Password authentication (demo/devq)
+- Interactive terminal sessions
+- Remote server management capabilities
+
+**Connection:**
+```bash
+ssh -p 2222 demo@your-server.com
+# Password: demo or devq
+```
+
+### 📖 Help Command
+```bash
+devgen help          # Show comprehensive help
+devgen guide         # Alias
+devgen docs          # Alias
+```
+
+## 🔌 Supported MCP Servers
+
+DevGen manages 13+ MCP servers across multiple categories:
+
+### 🧠 Knowledge Servers
 - **context7-mcp** - Redis-backed contextual reasoning and document management
 - **memory-mcp** - Memory management and persistence for AI workflows
 - **sequential-thinking-mcp** - Step-by-step problem solving and reasoning chains
 
-### Development Servers
+### ⚡ Development Servers
 - **fastapi-mcp** - FastAPI project generation and management
 - **pytest-mcp** - Python testing framework integration
 - **pydantic-ai-mcp** - Pydantic AI agent management and orchestration
 
-### Web & Data Servers
+### 🌐 Web & Data Servers
 - **crawl4ai-mcp** - Web crawling and content extraction
 - **github-mcp** - GitHub repository operations and management
 - **surrealdb-mcp** - Multi-model database operations
 
-### Framework Servers
+### 🔧 Framework Servers
 - **fastmcp-mcp** - FastMCP framework status and management
 - **registry-mcp** - MCP server discovery and registry management
 
-## 🎨 Terminal UI Design
+### 💾 Database Servers
+- **postgres-mcp** - PostgreSQL database operations
+- **sqlite-mcp** - SQLite database management
 
-DevGen uses a cyberpunk-inspired color scheme:
+### 🏗️ Infrastructure Servers
+- **logfire-mcp** - Observability and logging platform integration
 
-- **Primary**: Neon Pink (`#FF10F0`)
-- **Success**: Neon Green (`#39FF14`)
-- **Error**: Neon Red (`#FF3131`)
-- **Warning**: Neon Yellow (`#E9FF32`)
-- **Info**: Neon Cyan (`#00FFFF`)
+## 🎨 Design & UI
 
-## 📁 Configuration Files
+DevGen features a modern cyberpunk-inspired terminal interface:
 
-DevGen automatically searches for `mcp_status.json` in these locations:
+**Color Palette:**
+- Primary: Neon Pink (`#FF10F0`)
+- Success: Neon Green (`#39FF14`) 
+- Error: Neon Red (`#FF3131`)
+- Info: Neon Cyan (`#00FFFF`)
+- Text: Light Gray (`#E3E3E3`)
+
+**UI Elements:**
+- Category emoji indicators for visual organization
+- Clean single-column layout with proper text wrapping
+- Responsive design that adapts to terminal size
+- Consistent styling across all commands
+
+## ⚙️ Configuration
+
+DevGen automatically searches for `mcp_status.json` configuration in:
 
 1. Current directory (`./mcp_status.json`)
 2. Parent directory (`../mcp_status.json`)
-3. Default Machina location (`/Users/dionedge/devqai/machina/mcp_status.json`)
+3. DevQAI machina directory (`/Users/dionedge/devqai/machina/mcp_status.json`)
 
-You can specify a custom config file:
-
+**Custom Configuration:**
 ```bash
-devgen --config /path/to/mcp_status.json server list
+devgen --config /path/to/custom.json dashboard
 ```
 
-## 🔍 Command Reference
-
-### Global Flags
-
-- `--config, -c` - Config file path (default: `mcp_status.json`)
+**Global Flags:**
+- `--config, -c FILE` - Configuration file path
 - `--verbose, -v` - Enable verbose logging
-- `--log-level` - Set log level (debug, info, warn, error)
-- `--interactive, -i` - Enable interactive mode
-- `--help, -h` - Show help
-- `--version` - Show version
+- `--log-level LEVEL` - Set log level (debug, info, warn, error)
+- `--ssh` - Start SSH server mode
+- `--ssh-port PORT` - SSH server port (default: 2222)
+- `--ssh-host HOST` - SSH server host (default: localhost)
+- `--registry-url URL` - MCP registry URL (default: http://127.0.0.1:31337)
+- `--use-registry` - Use MCP registry for server management
 
-### Server Commands
+## 🚀 Planned Features
 
-```bash
-devgen server [command]
+DevGen CLI includes comprehensive technical specifications for upcoming features:
 
-Available Commands:
-  list      List all MCP servers
-  status    Show server status [server-name]
-  start     Start a server [server-name]
-  stop      Stop a server [server-name]
-  toggle    Toggle server on/off [server-name]
-  health    Check health of all servers
-```
+### 🧠 Knowledge Base Management (`devgen kb`)
+- Database statistics and analytics
+- Knowledge base health monitoring
+- Data import/export capabilities
+- Vector search integration
 
-### Dashboard Command
+### 🔍 RAG-Powered Search (`devgen search`)
+- Semantic similarity search across knowledge bases
+- Code pattern matching and discovery
+- Multi-source search aggregation
+- Knowledge graph exploration
 
-```bash
-devgen dashboard
-
-Launch interactive terminal dashboard for real-time server management
-```
-
-### Config Commands
-
-```bash
-devgen config [command]
-
-Available Commands:
-  show      Show current configuration
-  init      Verify configuration file
-```
+### 🛡️ DeHallucinator (`devgen dehall`)
+- AI hallucination detection and prevention
+- Fact verification against knowledge bases
+- Code accuracy validation
+- Real-time verification during AI interactions
 
 ## 🛠️ Development
 
-### Building
+### Building from Source
 
 ```bash
 # Install dependencies
-make deps
+go mod download
 
 # Build for current platform
 make build
 
-# Build for development (with debug info)
-make build-dev
+# Install locally
+make install-user
 
 # Cross-compile for all platforms
 make cross-compile
-```
 
-### Testing
-
-```bash
 # Run tests
 make test
 
-# Run with coverage
-make test-coverage
-
-# Integration tests
-make test-integration
+# Development build with debug info
+make build-dev
 ```
 
-### Code Quality
+### Project Structure
+
+```
+devgen-cli/
+├── src/                 # Go source files
+│   ├── main.go         # Main CLI and command definitions
+│   ├── dashboard.go    # Interactive dashboard implementation
+│   └── registry.go     # Registry integration
+├── docs/               # Documentation
+│   └── TECHNICAL_SPECIFICATION.md
+├── build/              # Build artifacts
+├── Makefile           # Build and development tasks
+└── README.md          # This file
+```
+
+### Make Targets
 
 ```bash
-# Format code
-make format
-
-# Run linter
-make lint
-
-# Run security checks
-make security
-
-# Run all quality checks
-make check
+make build          # Build the CLI binary
+make install-user   # Install to ~/.local/bin
+make test          # Run tests
+make clean         # Clean build artifacts
+make help          # Show available targets
 ```
 
 ## 📊 Example Output
 
-### Server List
+### Dashboard View
 ```
-🔌 MCP Server Registry
+🚀 DevGen MCP Server Dashboard
 
-• context7-mcp [active]
-  Redis-backed contextual reasoning and document management with vector search
-  Endpoint: stdio://devqai/mcp/mcp-servers/context7-mcp/context7_mcp/server.py
-  Tools: 15 available
-  Category: knowledge
-  Framework: FastMCP
-  Last Health Check: 2025-07-10T13:25:07-05:00
+🧠 context7-mcp                    active
+   Redis-backed contextual reasoning and document management
+   
+⚡ fastapi-mcp                     active  
+   FastAPI project generation and management
+   
+🌐 crawl4ai-mcp                    inactive
+   Web crawling and content extraction
 
-• memory-mcp [production-ready]
-  Memory management and persistence for AI workflows with search capabilities
-  Endpoint: stdio://devqai/mcp/mcp-servers/memory-mcp/memory_mcp/server.py
-  Tools: 8 available
-  Category: knowledge
-  Framework: FastMCP
-  Last Health Check: Never
+Press ↑/↓ to navigate, Enter to toggle, q to quit
 ```
 
-### Server Status
+### Registry Status
 ```
-📊 Status: context7-mcp
-Status: active
-Version: 1.0.0
-Description: Redis-backed contextual reasoning and document management with vector search
-Endpoint: stdio://devqai/mcp/mcp-servers/context7-mcp/context7_mcp/server.py
-Category: knowledge
-Framework: FastMCP
-Tools: 15 available
-  Available tools: store_document, search_documents, get_context, clear_context, list_documents
-  ... and 10 more tools
-Last Health Check: 2025-07-10T13:25:07-05:00
-Health Check Failures: 0
+🌐 MCP Registry Status
+
+✓ Registry is running at http://127.0.0.1:31337
+✓ 13 servers registered
+✓ 81+ tools available
+✓ Last updated: 2025-07-12T10:30:15Z
 ```
 
 ## 🤝 Contributing
@@ -263,14 +299,16 @@ Health Check Failures: 0
 
 ## 📝 License
 
-This project is part of the DevQ.ai ecosystem and follows the same licensing terms.
+This project is part of the DevQ.ai ecosystem. See [LICENSE](LICENSE) for details.
 
 ## 🔗 Related Projects
 
-- [Machina MCP Registry](../machina/README.md) - The main MCP server registry platform
-- [FastMCP Framework](../machina/fastmcp/) - Framework for building MCP servers
-- [DevQ.ai](https://devq.ai) - AI-powered development tools
+- **[DevQ.ai Platform](https://devq.ai)** - AI-powered development tools
+- **[MCP Registry](https://github.com/devq-ai/mcp-registry)** - Centralized MCP server discovery
+- **[FastMCP Framework](https://github.com/devq-ai/fastmcp)** - Framework for building MCP servers
 
 ---
 
-Built with ❤️ by the DevQ.ai team using [Charm](https://charm.sh) libraries.\n\n---\n\n## 🌐 NEW: MCP Registry Integration\n\nThe CLI now supports integration with the HTTP-based MCP Registry system for centralized server management:\n\n### Registry Commands\n\n```bash\n# Check registry status\ndevgen registry status\n\n# List registered servers\ndevgen registry servers\n\n# List all available tools\ndevgen registry tools\n\n# Start the registry\ndevgen registry start\n```\n\n### Registry Features\n\n- **Centralized Discovery**: All 13 MCP servers accessible through a single HTTP endpoint\n- **Tool Aggregation**: Unified access to 81+ tools across all servers\n- **Health Monitoring**: Real-time status for all registered servers\n- **Auto-Registration**: Servers automatically register with the registry\n- **HTTP API**: RESTful endpoints for integration with other tools\n\n### Registry URLs\n\n- **Main Registry**: http://127.0.0.1:31337\n- **Servers Endpoint**: http://127.0.0.1:31337/servers\n- **Tools Endpoint**: http://127.0.0.1:31337/tools\n\n### Configuration\n\n```bash\n# Use registry for server management\ndevgen --use-registry dashboard\n\n# Custom registry URL\ndevgen --registry-url http://localhost:8080 registry status\n```
+**Built with ❤️ by the DevQ.ai team using [Charm](https://charm.sh) libraries.**
+
+*For detailed technical specifications and architecture, see [docs/TECHNICAL_SPECIFICATION.md](docs/TECHNICAL_SPECIFICATION.md)*
