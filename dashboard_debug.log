@@ -1,0 +1,167 @@
+KEY EVENT: Type=-1, String='q', Runes=[113]
+KEY STRING: 'q'
+QUIT: q key detected
+LOAD: Starting loadServers from configFile=mcp_status.json
+LOAD: Registry loaded successfully, 13 servers
+LOAD: Returning serversLoadedMsg with 13 servers
+  LOAD TARGET: crawl4ai-mcp (status: active) at index 3
+MSG: serversLoadedMsg received
+UI UPDATE: Set 13 servers in model
+  UI MODEL TARGET: crawl4ai-mcp (status: active) at index 3
+  Selected server: 0 = context7-mcp (status: active)
+KEY EVENT: Type=-3, String='down', Runes=[]
+KEY STRING: 'down'
+DOWN: selected 0 -> 1
+KEY EVENT: Type=-3, String='down', Runes=[]
+KEY STRING: 'down'
+DOWN: selected 1 -> 2
+KEY EVENT: Type=-1, String='q', Runes=[113]
+KEY STRING: 'q'
+QUIT: q key detected
+LOAD: Starting loadServers from configFile=mcp_status.json
+LOAD: Registry loaded successfully, 13 servers
+LOAD: Returning serversLoadedMsg with 13 servers
+  LOAD TARGET: crawl4ai-mcp (status: active) at index 3
+MSG: serversLoadedMsg received
+UI UPDATE: Set 13 servers in model
+  UI MODEL TARGET: crawl4ai-mcp (status: active) at index 3
+  Selected server: 0 = context7-mcp (status: active)
+KEY EVENT: Type=-1, String='q', Runes=[113]
+KEY STRING: 'q'
+QUIT: q key detected
+LOAD: Starting loadServers from configFile=mcp_status.json
+LOAD: Registry loaded successfully, 13 servers
+LOAD: Returning serversLoadedMsg with 13 servers
+  LOAD TARGET: crawl4ai-mcp (status: active) at index 3
+MSG: serversLoadedMsg received
+UI UPDATE: Set 13 servers in model
+  UI MODEL TARGET: crawl4ai-mcp (status: active) at index 3
+  Selected server: 0 = context7-mcp (status: active)
+KEY EVENT: Type=-1, String='r', Runes=[114]
+KEY STRING: 'r'
+REFRESH: r key detected, setting loading=true
+LOAD: Starting loadServers from configFile=mcp_status.json
+LOAD: Registry loaded successfully, 13 servers
+LOAD: Returning serversLoadedMsg with 13 servers
+  LOAD TARGET: crawl4ai-mcp (status: active) at index 3
+MSG: serversLoadedMsg received
+UI UPDATE: Set 13 servers in model
+  UI MODEL TARGET: crawl4ai-mcp (status: active) at index 3
+  Selected server: 0 = context7-mcp (status: active)
+KEY EVENT: Type=-1, String='r', Runes=[114]
+KEY STRING: 'r'
+REFRESH: r key detected, setting loading=true
+LOAD: Starting loadServers from configFile=mcp_status.json
+LOAD: Registry loaded successfully, 13 servers
+LOAD: Returning serversLoadedMsg with 13 servers
+  LOAD TARGET: crawl4ai-mcp (status: active) at index 3
+MSG: serversLoadedMsg received
+UI UPDATE: Set 13 servers in model
+  UI MODEL TARGET: crawl4ai-mcp (status: active) at index 3
+  Selected server: 0 = context7-mcp (status: active)
+KEY EVENT: Type=-3, String='down', Runes=[]
+KEY STRING: 'down'
+DOWN: selected 0 -> 1
+KEY EVENT: Type=-3, String='down', Runes=[]
+KEY STRING: 'down'
+DOWN: selected 1 -> 2
+KEY EVENT: Type=13, String='enter', Runes=[]
+KEY STRING: 'enter'
+ENTER: servers=13, selected=2
+TOGGLE: Calling toggleServerCmd for sequential-thinking-mcp
+TOGGLE CMD: Starting toggle for server 'sequential-thinking-mcp' using configFile=mcp_status.json
+TOGGLE CMD: Registry loaded, 13 servers
+TOGGLE CMD: Changed sequential-thinking-mcp status from 'active' to 'inactive'
+TOGGLE CMD: Registry saved successfully
+MSG: Received serverToggledMsg, triggering reload
+LOAD: Starting loadServers from configFile=mcp_status.json
+LOAD: Registry loaded successfully, 13 servers
+LOAD: Returning serversLoadedMsg with 13 servers
+  LOAD TARGET: crawl4ai-mcp (status: active) at index 3
+MSG: serversLoadedMsg received
+UI UPDATE: Set 13 servers in model
+  UI MODEL TARGET: crawl4ai-mcp (status: active) at index 3
+  Selected server: 2 = sequential-thinking-mcp (status: inactive)
+KEY EVENT: Type=13, String='enter', Runes=[]
+KEY STRING: 'enter'
+ENTER: servers=13, selected=2
+TOGGLE: Calling toggleServerCmd for sequential-thinking-mcp
+TOGGLE CMD: Starting toggle for server 'sequential-thinking-mcp' using configFile=mcp_status.json
+TOGGLE CMD: Registry loaded, 13 servers
+TOGGLE CMD: Changed sequential-thinking-mcp status from 'inactive' to 'active'
+TOGGLE CMD: Registry saved successfully
+MSG: Received serverToggledMsg, triggering reload
+LOAD: Starting loadServers from configFile=mcp_status.json
+LOAD: Registry loaded successfully, 13 servers
+LOAD: Returning serversLoadedMsg with 13 servers
+  LOAD TARGET: crawl4ai-mcp (status: active) at index 3
+MSG: serversLoadedMsg received
+UI UPDATE: Set 13 servers in model
+  UI MODEL TARGET: crawl4ai-mcp (status: active) at index 3
+  Selected server: 2 = sequential-thinking-mcp (status: active)
+KEY EVENT: Type=-3, String='down', Runes=[]
+KEY STRING: 'down'
+DOWN: selected 2 -> 3
+KEY EVENT: Type=-3, String='down', Runes=[]
+KEY STRING: 'down'
+DOWN: selected 3 -> 4
+KEY EVENT: Type=-3, String='down', Runes=[]
+KEY STRING: 'down'
+DOWN: selected 4 -> 5
+KEY EVENT: Type=-3, String='down', Runes=[]
+KEY STRING: 'down'
+DOWN: selected 5 -> 6
+KEY EVENT: Type=-1, String='q', Runes=[113]
+KEY STRING: 'q'
+QUIT: q key detected
+LOAD: Starting loadServers from configFile=mcp_status.json
+LOAD: Registry loaded successfully, 13 servers
+LOAD: Returning serversLoadedMsg with 13 servers
+  LOAD TARGET: crawl4ai-mcp (status: active) at index 3
+MSG: serversLoadedMsg received
+UI UPDATE: Set 13 servers in model
+  UI MODEL TARGET: crawl4ai-mcp (status: active) at index 3
+  Selected server: 0 = context7-mcp (status: active)
+KEY EVENT: Type=-1, String='Q', Runes=[81]
+KEY STRING: 'Q'
+KEY EVENT: Type=-1, String='Q', Runes=[81]
+KEY STRING: 'Q'
+KEY EVENT: Type=-1, String='Q', Runes=[81]
+KEY STRING: 'Q'
+KEY EVENT: Type=13, String='enter', Runes=[]
+KEY STRING: 'enter'
+ENTER: servers=13, selected=0
+TOGGLE: Calling toggleServerCmd for context7-mcp
+TOGGLE CMD: Starting toggle for server 'context7-mcp' using configFile=mcp_status.json
+KEY EVENT: Type=-1, String='\', Runes=[92]
+KEY STRING: '\'
+TOGGLE CMD: Registry loaded, 13 servers
+TOGGLE CMD: Changed context7-mcp status from 'active' to 'inactive'
+TOGGLE CMD: Registry saved successfully
+MSG: Received serverToggledMsg, triggering reload
+LOAD: Starting loadServers from configFile=mcp_status.json
+LOAD: Registry loaded successfully, 13 servers
+LOAD: Returning serversLoadedMsg with 13 servers
+  LOAD TARGET: crawl4ai-mcp (status: active) at index 3
+MSG: serversLoadedMsg received
+UI UPDATE: Set 13 servers in model
+  UI MODEL TARGET: crawl4ai-mcp (status: active) at index 3
+  Selected server: 0 = context7-mcp (status: inactive)
+KEY EVENT: Type=-1, String='Q', Runes=[81]
+KEY STRING: 'Q'
+KEY EVENT: Type=-1, String='Q', Runes=[81]
+KEY STRING: 'Q'
+KEY EVENT: Type=-1, String='q', Runes=[113]
+KEY STRING: 'q'
+QUIT: q key detected
+LOAD: Starting loadServers from configFile=mcp_status.json
+LOAD: Registry loaded successfully, 13 servers
+LOAD: Returning serversLoadedMsg with 13 servers
+  LOAD TARGET: crawl4ai-mcp (status: active) at index 3
+MSG: serversLoadedMsg received
+UI UPDATE: Set 13 servers in model
+  UI MODEL TARGET: crawl4ai-mcp (status: active) at index 3
+  Selected server: 0 = context7-mcp (status: inactive)
+KEY EVENT: Type=-1, String='q', Runes=[113]
+KEY STRING: 'q'
+QUIT: q key detected

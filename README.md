@@ -1,535 +1,276 @@
-# DevGen CLI - Development Generation Tool with Charm UI
+# DevGen CLI - MCP Server Management Tool
 
-A powerful command-line interface for development artifact generation, project management, and workflow orchestration, built with Go and the Charm ecosystem for beautiful terminal user interfaces.
+DevGen is a powerful command-line interface for managing MCP (Model Context Protocol) servers with beautiful terminal UI powered by Charm libraries.
 
-## 🎯 Overview
+## 🚀 Features
 
-DevGen CLI provides an interactive terminal experience for:
-- **Playbook Execution**: Run development workflows with real-time progress tracking
-- **Project Management**: Initialize, configure, and manage development projects
-- **Template System**: Install and create reusable project templates
-- **Development Server**: Start and monitor development servers with live reload
-- **Configuration Management**: Interactive configuration editing and validation
+- **Interactive Dashboard** - Beautiful terminal UI for real-time server monitoring
+- **Server Management** - Start, stop, and toggle MCP servers with simple commands
+- **Health Monitoring** - Check server status and health across all registered servers
+- **Registry Integration** - Works seamlessly with the Machina MCP Registry
+- **Terminal UI** - Built with Charm libraries for an elegant terminal experience
 
-## 🌟 Features
+## 📦 Installation
 
-### 🚀 Interactive Playbook Execution
-- Real-time progress tracking with animated spinners
-- Multi-branch parallel execution support
-- Conditional step execution with dependency management
-- Comprehensive logging and error handling
-- Pause/resume functionality
-- Multiple view modes (overview, branches, logs, progress)
+### From Source
 
-### 🎨 Beautiful Terminal UI
-- **Cyber Theme**: High-contrast neon colors for maximum visibility
-- **Pastel Theme**: Soft colors for comfortable extended use
-- Responsive layouts that adapt to terminal size
-- Keyboard navigation with vim-style bindings
-- Help system with context-aware shortcuts
-- Progress bars and status indicators
+```bash
+# Clone and build
+git clone https://github.com/devq-ai/devqai.git
+cd devqai/devgen-cli
+make build
 
-### 📦 Template Management
-- Browse available templates with filtering
-- Interactive template installation with progress tracking
-- Create custom templates with guided setup
-- Version management and automatic updates
-- Local and remote template repositories
-
-### 🏗️ Project Lifecycle
-- Interactive project initialization
-- Real-time project status dashboard
-- Artifact generation (APIs, components, configs)
-- Health monitoring and metrics
-- Integration with DevQ.ai standards
-
-### ⚙️ Advanced Configuration
-- Interactive configuration editor
-- YAML validation and syntax highlighting
-- Environment-specific profiles
-- Hot reload configuration changes
-- Backup and restore settings
-
-## 🛠️ Installation
+# Install globally
+make install
+```
 
 ### Prerequisites
-- Go 1.21 or later
-- Terminal with true color support (recommended)
 
-### Build from Source
+- Go 1.23 or higher
+- Access to the Machina MCP Registry (`mcp_status.json`)
+
+## 🔧 Usage
+
+### Basic Commands
+
 ```bash
-git clone https://github.com/devq-ai/devgen-cli.git
-cd devgen-cli
-go mod tidy
-go build -o devgen .
+# List all MCP servers
+devgen server list
+
+# Show status of a specific server
+devgen server status context7-mcp
+
+# Start a server
+devgen server start context7-mcp
+
+# Stop a server
+devgen server stop context7-mcp
+
+# Toggle server on/off
+devgen server toggle context7-mcp
+
+# Check health of all servers
+devgen server health
 ```
 
-### Install Binary
-```bash
-# Install to /usr/local/bin
-sudo cp devgen /usr/local/bin/
+### Interactive Dashboard
 
-# Or add to PATH
-export PATH=$PATH:$(pwd)
+Launch the interactive terminal dashboard:
+
+```bash
+devgen dashboard
 ```
 
-## 🚀 Quick Start
+**Dashboard Controls:**
+- `↑/↓` - Navigate server list
+- `Enter` - Toggle selected server on/off
+- `r` - Refresh server status
+- `q` - Quit dashboard
 
-### Initialize Configuration
+### Configuration
+
 ```bash
-# Create default configuration
+# Show current configuration
+devgen config show
+
+# Verify configuration file
 devgen config init
-
-# Edit configuration interactively
-devgen config edit
 ```
 
-### Run a Playbook
+## 🔌 MCP Server Registry
+
+DevGen works with the Machina MCP Registry which includes:
+
+### Knowledge Servers
+- **context7-mcp** - Redis-backed contextual reasoning and document management
+- **memory-mcp** - Memory management and persistence for AI workflows
+- **sequential-thinking-mcp** - Step-by-step problem solving and reasoning chains
+
+### Development Servers
+- **fastapi-mcp** - FastAPI project generation and management
+- **pytest-mcp** - Python testing framework integration
+- **pydantic-ai-mcp** - Pydantic AI agent management and orchestration
+
+### Web & Data Servers
+- **crawl4ai-mcp** - Web crawling and content extraction
+- **github-mcp** - GitHub repository operations and management
+- **surrealdb-mcp** - Multi-model database operations
+
+### Framework Servers
+- **fastmcp-mcp** - FastMCP framework status and management
+- **registry-mcp** - MCP server discovery and registry management
+
+## 🎨 Terminal UI Design
+
+DevGen uses a cyberpunk-inspired color scheme:
+
+- **Primary**: Neon Pink (`#FF10F0`)
+- **Success**: Neon Green (`#39FF14`)
+- **Error**: Neon Red (`#FF3131`)
+- **Warning**: Neon Yellow (`#E9FF32`)
+- **Info**: Neon Cyan (`#00FFFF`)
+
+## 📁 Configuration Files
+
+DevGen automatically searches for `mcp_status.json` in these locations:
+
+1. Current directory (`./mcp_status.json`)
+2. Parent directory (`../mcp_status.json`)
+3. Default Machina location (`/Users/dionedge/devqai/machina/mcp_status.json`)
+
+You can specify a custom config file:
+
 ```bash
-# List available playbooks
-devgen playbook list
-
-# Run a specific playbook
-devgen playbook run my-workflow.yaml
-
-# Create a new playbook
-devgen playbook create
+devgen --config /path/to/mcp_status.json server list
 ```
 
-### Project Management
-```bash
-# Initialize a new project
-devgen project init my-app
-
-# Show project status
-devgen project status
-
-# Generate artifacts
-devgen project generate api
-```
-
-### Template Operations
-```bash
-# List available templates
-devgen template list
-
-# Install a template
-devgen template install fastapi-basic
-
-# Create a custom template
-devgen template create
-```
-
-### Development Server
-```bash
-# Start development server with monitoring
-devgen server start
-
-# Check server status
-devgen server status
-
-# Stop server
-devgen server stop
-```
-
-## 📋 Command Reference
+## 🔍 Command Reference
 
 ### Global Flags
-```bash
--c, --config string      Config file path (default: ~/.devgen/config.yaml)
--v, --verbose           Enable verbose logging
-    --log-level string  Log level (debug, info, warn, error)
--o, --output string     Output directory for generated files
--i, --interactive       Enable interactive mode
-```
 
-### Playbook Commands
-```bash
-devgen playbook run <file>        # Execute playbook with interactive UI
-devgen playbook validate <file>   # Validate playbook configuration
-devgen playbook create            # Create new playbook interactively
-devgen playbook list              # List available playbooks
-```
-
-### Template Commands
-```bash
-devgen template list              # Show available templates
-devgen template install <name>    # Install template with progress
-devgen template create            # Create new template
-```
-
-### Project Commands
-```bash
-devgen project init [name]        # Initialize new project
-devgen project status             # Show project status dashboard
-devgen project generate <type>    # Generate project artifacts
-```
+- `--config, -c` - Config file path (default: `mcp_status.json`)
+- `--verbose, -v` - Enable verbose logging
+- `--log-level` - Set log level (debug, info, warn, error)
+- `--interactive, -i` - Enable interactive mode
+- `--help, -h` - Show help
+- `--version` - Show version
 
 ### Server Commands
+
 ```bash
-devgen server start               # Start development server
-devgen server stop                # Stop development server
-devgen server status              # Show server status
+devgen server [command]
+
+Available Commands:
+  list      List all MCP servers
+  status    Show server status [server-name]
+  start     Start a server [server-name]
+  stop      Stop a server [server-name]
+  toggle    Toggle server on/off [server-name]
+  health    Check health of all servers
 ```
 
-### Configuration Commands
+### Dashboard Command
+
 ```bash
-devgen config init                # Initialize default configuration
-devgen config edit                # Edit configuration interactively
-devgen config show                # Display current configuration
+devgen dashboard
+
+Launch interactive terminal dashboard for real-time server management
 ```
 
-## 🎨 UI Themes
+### Config Commands
 
-### Cyber Theme (Default)
-Perfect for high-energy development sessions with maximum contrast:
-- **Primary**: Electric Cyan (#00ffff)
-- **Secondary**: Neon Pink (#ff0080)
-- **Success**: Matrix Green (#00ff00)
-- **Warning**: Laser Yellow (#ffff00)
-- **Background**: Void Black (#000000)
+```bash
+devgen config [command]
 
-### Pastel Theme
-Comfortable for extended use with gentle colors:
-- **Primary**: Sky Blue (#b3e5fc)
-- **Secondary**: Blush Pink (#ffb3ba)
-- **Success**: Mint Green (#a8e6a3)
-- **Warning**: Cream Yellow (#fff9c4)
-- **Background**: Midnight Black (#000000)
-
-### Theme Configuration
-```yaml
-ui:
-  theme:
-    name: "cyber"  # or "pastel"
-    dark_mode: true
-    colors:
-      primary: "#00ffff"
-      secondary: "#ff0080"
-      # ... custom colors
+Available Commands:
+  show      Show current configuration
+  init      Verify configuration file
 ```
 
-## ⌨️ Keyboard Shortcuts
-
-### Global Navigation
-- `q` / `Ctrl+C`: Quit application
-- `?`: Toggle help panel
-- `Tab`: Switch between views
-- `↑`/`↓` or `k`/`j`: Navigate up/down
-- `←`/`→` or `h`/`l`: Navigate left/right
-
-### Playbook Execution
-- `e`: Execute/start playbook
-- `p`: Pause/resume execution
-- `r`: Reset playbook to initial state
-- `d`: Show detailed step information
-- `Space`: Toggle step selection
-- `Enter`: Select/confirm action
-
-### List Navigation
-- `/`: Filter/search items
-- `Enter`: Select item
-- `Esc`: Clear filter/cancel
-
-## 📁 Configuration Structure
-
-### Main Configuration (`~/.devgen/config.yaml`)
-```yaml
-version: "1.0.0"
-devgen:
-  default_output_dir: "./output"
-  default_template: "fastapi-basic"
-  auto_save: true
-
-templates:
-  repository: "https://github.com/devq-ai/templates.git"
-  local_path: "~/.devgen/templates"
-  auto_update: true
-
-projects:
-  workspace: "~/projects"
-  default_structure:
-    directories: ["src", "tests", "docs"]
-
-servers:
-  default:
-    host: "localhost"
-    port: 8080
-    auto_restart: true
-
-logging:
-  level: "info"
-  format: "json"
-  colors: true
-
-ui:
-  theme:
-    name: "cyber"
-    dark_mode: true
-```
-
-### Playbook Structure
-```yaml
-name: "Development Workflow"
-version: "1.0.0"
-description: "Full-stack development pipeline"
-author: "DevQ.ai Team"
-
-variables:
-  project_name: "my-app"
-  environment: "development"
-
-branches:
-  - name: "backend-setup"
-    description: "Initialize backend services"
-    parallel: false
-    steps:
-      - name: "setup-database"
-        agent: "database-manager"
-        action: "create and configure database"
-        condition: "start"
-        timeout: "5m"
-
-      - name: "start-api"
-        agent: "api-server"
-        action: "start FastAPI server"
-        condition: "database-ready"
-        depends: ["setup-database"]
-
-  - name: "frontend-setup"
-    description: "Initialize frontend application"
-    parallel: true
-    steps:
-      - name: "install-deps"
-        agent: "package-manager"
-        action: "install Node.js dependencies"
-        condition: "start"
-
-      - name: "start-dev-server"
-        agent: "dev-server"
-        action: "start Next.js development server"
-        condition: "deps-installed"
-```
-
-## 🔧 Development
-
-### Project Structure
-```
-cli_frontend/
-├── main.go              # CLI entry point and command structure
-├── ui.go                # Main UI components and playbook execution
-├── engine.go            # Execution engine with step management
-├── config.go            # Configuration management and YAML handling
-├── components/
-│   └── ui_components.go # Additional UI components (lists, forms, etc.)
-├── go.mod               # Go module definition
-├── go.sum               # Dependency checksums
-├── README.md            # This file
-├── style_guide.md       # UI design system documentation
-├── charm_libraries.md   # Charm ecosystem component reference
-└── cli_testing_strategies.md # Testing approaches and examples
-```
-
-### Key Dependencies
-- **Bubble Tea**: TUI framework with Elm architecture
-- **Lip Gloss**: CSS-like styling for terminal layouts
-- **Bubbles**: Pre-built UI components (lists, inputs, tables)
-- **Glamour**: Markdown rendering with syntax highlighting
-- **Huh**: Terminal forms and prompts
-- **Cobra**: CLI command structure and parsing
-- **YAML v3**: Configuration file parsing
+## 🛠️ Development
 
 ### Building
+
 ```bash
-# Development build
-go build -o devgen .
+# Install dependencies
+make deps
 
-# Production build with optimizations
-go build -ldflags="-s -w" -o devgen .
+# Build for current platform
+make build
 
-# Cross-compilation
-GOOS=linux GOARCH=amd64 go build -o devgen-linux .
-GOOS=darwin GOARCH=amd64 go build -o devgen-macos .
-GOOS=windows GOARCH=amd64 go build -o devgen.exe .
+# Build for development (with debug info)
+make build-dev
+
+# Cross-compile for all platforms
+make cross-compile
 ```
 
 ### Testing
-```bash
-# Run all tests
-go test ./...
-
-# Run tests with coverage
-go test -cover ./...
-
-# Run specific test
-go test -run TestPlaybookExecution
-
-# Benchmark tests
-go test -bench=.
-```
-
-## 🎯 Advanced Usage
-
-### Custom Agents
-Create custom agents for specific tasks:
-
-```yaml
-# In playbook
-steps:
-  - name: "custom-deployment"
-    agent: "kubernetes-deployer"
-    action: "deploy to production cluster"
-    parameters:
-      namespace: "production"
-      replicas: 3
-      image: "my-app:latest"
-```
-
-### Environment Variables
-Configure runtime behavior:
 
 ```bash
-export DEVGEN_CONFIG_DIR="./custom-config"
-export DEVGEN_LOG_LEVEL="debug"
-export DEVGEN_THEME="pastel"
-export DEVGEN_AUTO_UPDATE="false"
+# Run tests
+make test
+
+# Run with coverage
+make test-coverage
+
+# Integration tests
+make test-integration
 ```
 
-### Integration with CI/CD
-Use in automated pipelines:
+### Code Quality
 
 ```bash
-# Non-interactive mode
-devgen playbook run --non-interactive deployment.yaml
+# Format code
+make format
 
-# JSON output for parsing
-devgen project status --output json
+# Run linter
+make lint
 
-# Exit codes for pipeline control
-devgen playbook validate *.yaml || exit 1
+# Run security checks
+make security
+
+# Run all quality checks
+make check
 ```
 
-### Custom Templates
-Create reusable project templates:
+## 📊 Example Output
 
-```yaml
-# template.yaml
-name: "My Custom Template"
-description: "Custom project template"
-files:
-  - src: "templates/main.go.tmpl"
-    dest: "main.go"
-  - src: "templates/config.yaml.tmpl"
-    dest: "config.yaml"
-variables:
-  - name: "project_name"
-    description: "Name of the project"
-    required: true
-  - name: "port"
-    description: "Server port"
-    default: "8080"
+### Server List
+```
+🔌 MCP Server Registry
+
+• context7-mcp [active]
+  Redis-backed contextual reasoning and document management with vector search
+  Endpoint: stdio://devqai/mcp/mcp-servers/context7-mcp/context7_mcp/server.py
+  Tools: 15 available
+  Category: knowledge
+  Framework: FastMCP
+  Last Health Check: 2025-07-10T13:25:07-05:00
+
+• memory-mcp [production-ready]
+  Memory management and persistence for AI workflows with search capabilities
+  Endpoint: stdio://devqai/mcp/mcp-servers/memory-mcp/memory_mcp/server.py
+  Tools: 8 available
+  Category: knowledge
+  Framework: FastMCP
+  Last Health Check: Never
 ```
 
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**Configuration not found**
-```bash
-# Initialize default configuration
-devgen config init
-
-# Verify configuration location
-devgen config show
+### Server Status
 ```
-
-**Playbook validation errors**
-```bash
-# Validate playbook syntax
-devgen playbook validate my-workflow.yaml
-
-# Check for missing dependencies
-devgen playbook run --dry-run my-workflow.yaml
+📊 Status: context7-mcp
+Status: active
+Version: 1.0.0
+Description: Redis-backed contextual reasoning and document management with vector search
+Endpoint: stdio://devqai/mcp/mcp-servers/context7-mcp/context7_mcp/server.py
+Category: knowledge
+Framework: FastMCP
+Tools: 15 available
+  Available tools: store_document, search_documents, get_context, clear_context, list_documents
+  ... and 10 more tools
+Last Health Check: 2025-07-10T13:25:07-05:00
+Health Check Failures: 0
 ```
-
-**UI rendering issues**
-```bash
-# Check terminal capabilities
-echo $TERM
-tput colors
-
-# Force basic rendering
-TERM=xterm-256color devgen playbook run workflow.yaml
-```
-
-**Permission errors**
-```bash
-# Check file permissions
-ls -la ~/.devgen/
-
-# Fix permissions
-chmod 755 ~/.devgen/
-chmod 644 ~/.devgen/config.yaml
-```
-
-### Debug Mode
-Enable verbose logging for troubleshooting:
-
-```bash
-# Enable debug logging
-devgen --log-level debug playbook run workflow.yaml
-
-# Save logs to file
-devgen --verbose playbook run workflow.yaml 2>&1 | tee debug.log
-```
-
-## 📚 Documentation
-
-- [Style Guide](style_guide.md) - UI design system and theming
-- [Charm Libraries](charm_libraries.md) - Component library reference
-- [Testing Strategies](cli_testing_strategies.md) - Testing approaches and examples
-- [API Reference](https://pkg.go.dev/github.com/devq-ai/devgen-cli) - Go package documentation
 
 ## 🤝 Contributing
 
-### Development Setup
 1. Fork the repository
-2. Clone your fork: `git clone https://github.com/yourusername/devgen-cli.git`
-3. Install dependencies: `go mod tidy`
-4. Create a feature branch: `git checkout -b feature-name`
-5. Make your changes and add tests
-6. Run tests: `go test ./...`
-7. Submit a pull request
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-### Code Style
-- Follow Go conventions and `gofmt` formatting
-- Use meaningful variable and function names
-- Add comments for public APIs
-- Include tests for new functionality
-- Update documentation for user-facing changes
+## 📝 License
 
-### UI Guidelines
-- Follow the established design system
-- Test with both cyber and pastel themes
-- Ensure keyboard navigation works properly
-- Test with different terminal sizes
-- Validate accessibility features
+This project is part of the DevQ.ai ecosystem and follows the same licensing terms.
 
-## 📄 License
+## 🔗 Related Projects
 
-MIT License - see [LICENSE](LICENSE) file for details.
+- [Machina MCP Registry](../machina/README.md) - The main MCP server registry platform
+- [FastMCP Framework](../machina/fastmcp/) - Framework for building MCP servers
+- [DevQ.ai](https://devq.ai) - AI-powered development tools
 
-## 🙏 Acknowledgments
+---
 
-- [Charm](https://charm.sh/) - For the amazing terminal UI framework
-- [DevQ.ai](https://devq.ai/) - For the development standards and workflow patterns
-- [Go team](https://golang.org/) - For the excellent programming language
-- Contributors and community members
-
-## 🔗 Links
-
-- [GitHub Repository](https://github.com/devq-ai/devgen-cli)
-- [Issue Tracker](https://github.com/devq-ai/devgen-cli/issues)
-- [Discussions](https://github.com/devq-ai/devgen-cli/discussions)
-- [DevQ.ai Documentation](https://docs.devq.ai/)
-- [Charm Documentation](https://charm.sh/docs/)
+Built with ❤️ by the DevQ.ai team using [Charm](https://charm.sh) libraries.\n\n---\n\n## 🌐 NEW: MCP Registry Integration\n\nThe CLI now supports integration with the HTTP-based MCP Registry system for centralized server management:\n\n### Registry Commands\n\n```bash\n# Check registry status\ndevgen registry status\n\n# List registered servers\ndevgen registry servers\n\n# List all available tools\ndevgen registry tools\n\n# Start the registry\ndevgen registry start\n```\n\n### Registry Features\n\n- **Centralized Discovery**: All 13 MCP servers accessible through a single HTTP endpoint\n- **Tool Aggregation**: Unified access to 81+ tools across all servers\n- **Health Monitoring**: Real-time status for all registered servers\n- **Auto-Registration**: Servers automatically register with the registry\n- **HTTP API**: RESTful endpoints for integration with other tools\n\n### Registry URLs\n\n- **Main Registry**: http://127.0.0.1:31337\n- **Servers Endpoint**: http://127.0.0.1:31337/servers\n- **Tools Endpoint**: http://127.0.0.1:31337/tools\n\n### Configuration\n\n```bash\n# Use registry for server management\ndevgen --use-registry dashboard\n\n# Custom registry URL\ndevgen --registry-url http://localhost:8080 registry status\n```

@@ -1,0 +1,892 @@
+{
+  "version": "1.0.0",
+  "timestamp": "2025-07-10T20:18:54.491349",
+  "servers": [
+    {
+      "name": "context7-mcp",
+      "endpoint": "stdio://devqai/mcp/mcp-servers/context7-mcp/context7_mcp/server.py",
+      "tools": [
+        "store_document",
+        "search_documents",
+        "get_context",
+        "clear_context",
+        "list_documents",
+        "delete_document",
+        "crawl_documentation",
+        "update_document",
+        "get_document",
+        "batch_store_documents",
+        "semantic_search",
+        "get_related_documents",
+        "generate_summary",
+        "extract_keywords",
+        "calculate_embeddings"
+      ],
+      "status": "inactive",
+      "version": "1.0.0",
+      "description": "Redis-backed contextual reasoning and document management with vector search",
+      "metadata": {
+        "framework": "FastMCP",
+        "category": "knowledge",
+        "health_check": "embedding_service_test",
+        "environment_vars": [
+          "OPENAI_API_KEY",
+          "UPSTASH_REDIS_REST_URL",
+          "UPSTASH_REDIS_REST_TOKEN"
+        ]
+      },
+      "registered_at": "2025-07-10T20:18:54.473355",
+      "last_health_check": "2025-07-12T11:13:07-05:00",
+      "last_seen": null,
+      "health_check_failures": 0
+    },
+    {
+      "name": "memory-mcp",
+      "endpoint": "stdio://devqai/mcp/mcp-servers/memory-mcp/memory_mcp/server.py",
+      "tools": [
+        "store_memory",
+        "retrieve_memory",
+        "update_memory",
+        "delete_memory",
+        "list_memories",
+        "search_memories",
+        "clear_all_memories",
+        "get_memory_stats"
+      ],
+      "status": "active",
+      "version": "1.0.0",
+      "description": "Memory management and persistence for AI workflows with search capabilities",
+      "metadata": {
+        "framework": "FastMCP",
+        "category": "knowledge",
+        "health_check": "memory_operations_test",
+        "environment_vars": []
+      },
+      "registered_at": "2025-07-10T20:18:54.475885",
+      "last_health_check": "",
+      "last_seen": null,
+      "health_check_failures": 0
+    },
+    {
+      "name": "sequential-thinking-mcp",
+      "endpoint": "stdio://devqai/mcp/mcp-servers/sequential-thinking-mcp/sequential_thinking_mcp/server.py",
+      "tools": [
+        "create_thinking_chain",
+        "add_thought_step",
+        "execute_thinking_chain"
+      ],
+      "status": "active",
+      "version": "1.0.0",
+      "description": "Step-by-step problem solving and reasoning chains for complex analysis",
+      "metadata": {
+        "framework": "FastMCP",
+        "category": "knowledge",
+        "health_check": "thinking_chain_test",
+        "environment_vars": []
+      },
+      "registered_at": "2025-07-10T20:18:54.477344",
+      "last_health_check": "",
+      "last_seen": null,
+      "health_check_failures": 0
+    },
+    {
+      "name": "crawl4ai-mcp",
+      "endpoint": "stdio://devqai/mcp/mcp-servers/crawl4ai-mcp/crawl4ai_mcp/server.py",
+      "tools": [
+        "crawl_url",
+        "extract_content",
+        "batch_crawl"
+      ],
+      "status": "active",
+      "version": "1.0.0",
+      "description": "Web crawling and content extraction with AI-powered content processing",
+      "metadata": {
+        "framework": "FastMCP",
+        "category": "web",
+        "health_check": "crawl_test",
+        "environment_vars": []
+      },
+      "registered_at": "2025-07-10T20:18:54.478539",
+      "last_health_check": "",
+      "last_seen": null,
+      "health_check_failures": 0
+    },
+    {
+      "name": "github-mcp",
+      "endpoint": "stdio://devqai/mcp/mcp-servers/github-mcp/github_mcp/server.py",
+      "tools": [
+        "get_repository",
+        "list_issues",
+        "create_issue"
+      ],
+      "status": "active",
+      "version": "1.0.0",
+      "description": "GitHub repository operations and management with issue tracking",
+      "metadata": {
+        "framework": "FastMCP",
+        "category": "web",
+        "health_check": "github_api_test",
+        "environment_vars": [
+          "GITHUB_TOKEN"
+        ]
+      },
+      "registered_at": "2025-07-10T20:18:54.479694",
+      "last_health_check": "",
+      "last_seen": null,
+      "health_check_failures": 0
+    },
+    {
+      "name": "fastapi-mcp",
+      "endpoint": "stdio://devqai/mcp/mcp-servers/fastapi-mcp/fastapi_mcp/server.py",
+      "tools": [
+        "create_project",
+        "generate_endpoint",
+        "add_middleware"
+      ],
+      "status": "active",
+      "version": "1.0.0",
+      "description": "FastAPI project generation and management with automated scaffolding",
+      "metadata": {
+        "framework": "FastMCP",
+        "category": "development",
+        "health_check": "project_generation_test",
+        "environment_vars": []
+      },
+      "registered_at": "2025-07-10T20:18:54.480792",
+      "last_health_check": "",
+      "last_seen": null,
+      "health_check_failures": 0
+    },
+    {
+      "name": "pytest-mcp",
+      "endpoint": "stdio://devqai/mcp/mcp-servers/pytest-mcp/pytest_mcp/server.py",
+      "tools": [
+        "run_tests",
+        "generate_test",
+        "get_coverage",
+        "create_fixture",
+        "run_specific_test",
+        "list_test_files",
+        "validate_test_structure"
+      ],
+      "status": "active",
+      "version": "1.0.0",
+      "description": "Python testing framework integration with automated test generation",
+      "metadata": {
+        "framework": "FastMCP",
+        "category": "development",
+        "health_check": "test_execution_test",
+        "environment_vars": []
+      },
+      "registered_at": "2025-07-10T20:18:54.481911",
+      "last_health_check": "2025-07-12T05:58:38-05:00",
+      "last_seen": null,
+      "health_check_failures": 0
+    },
+    {
+      "name": "pydantic-ai-mcp",
+      "endpoint": "stdio://devqai/mcp/mcp-servers/pydantic-ai-mcp/pydantic_ai_mcp/server.py",
+      "tools": [
+        "create_agent",
+        "run_agent",
+        "list_agents",
+        "get_agent_status"
+      ],
+      "status": "active",
+      "version": "1.0.0",
+      "description": "Pydantic AI agent management and orchestration with type-safe operations",
+      "metadata": {
+        "framework": "FastMCP",
+        "category": "development",
+        "health_check": "agent_creation_test",
+        "environment_vars": [
+          "ANTHROPIC_API_KEY"
+        ]
+      },
+      "registered_at": "2025-07-10T20:18:54.483165",
+      "last_health_check": "",
+      "last_seen": null,
+      "health_check_failures": 0
+    },
+    {
+      "name": "fastmcp-mcp",
+      "endpoint": "stdio://devqai/mcp/mcp-servers/fastmcp-mcp/fastmcp_mcp/server.py",
+      "tools": [
+        "get_framework_status"
+      ],
+      "status": "active",
+      "version": "1.0.0",
+      "description": "FastMCP framework status and management with health monitoring",
+      "metadata": {
+        "framework": "Standard MCP",
+        "category": "framework",
+        "health_check": "framework_status_test",
+        "environment_vars": []
+      },
+      "registered_at": "2025-07-10T20:18:54.487808",
+      "last_health_check": "",
+      "last_seen": null,
+      "health_check_failures": 0
+    },
+    {
+      "name": "registry-mcp",
+      "endpoint": "stdio://devqai/mcp/mcp-servers/registry-mcp/registry_mcp/server.py",
+      "tools": [
+        "register_server",
+        "list_servers",
+        "get_server_status"
+      ],
+      "status": "active",
+      "version": "1.0.0",
+      "description": "MCP server discovery and registry management with health monitoring",
+      "metadata": {
+        "framework": "FastMCP",
+        "category": "framework",
+        "health_check": "registry_discovery_test",
+        "environment_vars": []
+      },
+      "registered_at": "2025-07-10T20:18:54.489941",
+      "last_health_check": "2025-07-12T06:07:13-05:00",
+      "last_seen": null,
+      "health_check_failures": 0
+    },
+    {
+      "name": "surrealdb-mcp",
+      "endpoint": "stdio://devqai/mcp/mcp-servers/surrealdb-mcp/surrealdb_mcp/server.py",
+      "tools": [
+        "query_database",
+        "execute_transaction"
+      ],
+      "status": "active",
+      "version": "1.0.0",
+      "description": "Multi-model database operations with graph, document, and key-value support",
+      "metadata": {
+        "framework": "Standard MCP",
+        "category": "database",
+        "health_check": "database_operations_test",
+        "environment_vars": [
+          "SURREALDB_URL",
+          "SURREALDB_USERNAME",
+          "SURREALDB_PASSWORD"
+        ]
+      },
+      "registered_at": "2025-07-10T20:18:54.491344",
+      "last_health_check": "",
+      "last_seen": null,
+      "health_check_failures": 0
+    },
+    {
+      "name": "docker-mcp",
+      "endpoint": "stdio://devqai/mcp/mcp-servers/docker-mcp/docker_mcp/server.py",
+      "tools": [
+        "list_containers",
+        "start_container",
+        "stop_container",
+        "create_container",
+        "remove_container"
+      ],
+      "status": "active",
+      "version": "1.0.0",
+      "description": "Docker container management and orchestration with lifecycle control",
+      "metadata": {
+        "framework": "FastMCP",
+        "category": "infrastructure",
+        "health_check": "container_operations_test",
+        "environment_vars": [
+          "DOCKER_HOST"
+        ]
+      },
+      "registered_at": "2025-07-10T20:18:54.484385",
+      "last_health_check": "",
+      "last_seen": null,
+      "health_check_failures": 0
+    },
+    {
+      "name": "logfire-mcp",
+      "endpoint": "stdio://devqai/mcp/mcp-servers/logfire-mcp/logfire_mcp/server.py",
+      "tools": [
+        "configure_logfire",
+        "instrument_fastapi",
+        "instrument_sqlalchemy",
+        "instrument_httpx",
+        "create_span",
+        "log_info",
+        "log_error",
+        "log_warning",
+        "get_metrics",
+        "create_dashboard",
+        "set_user_context",
+        "capture_exception"
+      ],
+      "status": "active",
+      "version": "1.0.0",
+      "description": "Comprehensive observability and monitoring platform with real-time analytics",
+      "metadata": {
+        "framework": "FastMCP",
+        "category": "infrastructure",
+        "health_check": "observability_test",
+        "environment_vars": [
+          "LOGFIRE_TOKEN"
+        ]
+      },
+      "registered_at": "2025-07-10T20:18:54.485925",
+      "last_health_check": "",
+      "last_seen": null,
+      "health_check_failures": 0
+    }
+  ],
+  "tools": [
+    {
+      "name": "store_document",
+      "server_name": "context7-mcp",
+      "description": "Tool store_document from context7-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "search_documents",
+      "server_name": "context7-mcp",
+      "description": "Tool search_documents from context7-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "get_context",
+      "server_name": "context7-mcp",
+      "description": "Tool get_context from context7-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "clear_context",
+      "server_name": "context7-mcp",
+      "description": "Tool clear_context from context7-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "list_documents",
+      "server_name": "context7-mcp",
+      "description": "Tool list_documents from context7-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "delete_document",
+      "server_name": "context7-mcp",
+      "description": "Tool delete_document from context7-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "crawl_documentation",
+      "server_name": "context7-mcp",
+      "description": "Tool crawl_documentation from context7-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "update_document",
+      "server_name": "context7-mcp",
+      "description": "Tool update_document from context7-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "get_document",
+      "server_name": "context7-mcp",
+      "description": "Tool get_document from context7-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "batch_store_documents",
+      "server_name": "context7-mcp",
+      "description": "Tool batch_store_documents from context7-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "semantic_search",
+      "server_name": "context7-mcp",
+      "description": "Tool semantic_search from context7-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "get_related_documents",
+      "server_name": "context7-mcp",
+      "description": "Tool get_related_documents from context7-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "generate_summary",
+      "server_name": "context7-mcp",
+      "description": "Tool generate_summary from context7-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "extract_keywords",
+      "server_name": "context7-mcp",
+      "description": "Tool extract_keywords from context7-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "calculate_embeddings",
+      "server_name": "context7-mcp",
+      "description": "Tool calculate_embeddings from context7-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "store_memory",
+      "server_name": "memory-mcp",
+      "description": "Tool store_memory from memory-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "retrieve_memory",
+      "server_name": "memory-mcp",
+      "description": "Tool retrieve_memory from memory-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "update_memory",
+      "server_name": "memory-mcp",
+      "description": "Tool update_memory from memory-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "delete_memory",
+      "server_name": "memory-mcp",
+      "description": "Tool delete_memory from memory-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "list_memories",
+      "server_name": "memory-mcp",
+      "description": "Tool list_memories from memory-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "search_memories",
+      "server_name": "memory-mcp",
+      "description": "Tool search_memories from memory-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "clear_all_memories",
+      "server_name": "memory-mcp",
+      "description": "Tool clear_all_memories from memory-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "get_memory_stats",
+      "server_name": "memory-mcp",
+      "description": "Tool get_memory_stats from memory-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "create_thinking_chain",
+      "server_name": "sequential-thinking-mcp",
+      "description": "Tool create_thinking_chain from sequential-thinking-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "add_thought_step",
+      "server_name": "sequential-thinking-mcp",
+      "description": "Tool add_thought_step from sequential-thinking-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "execute_thinking_chain",
+      "server_name": "sequential-thinking-mcp",
+      "description": "Tool execute_thinking_chain from sequential-thinking-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "crawl_url",
+      "server_name": "crawl4ai-mcp",
+      "description": "Tool crawl_url from crawl4ai-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "extract_content",
+      "server_name": "crawl4ai-mcp",
+      "description": "Tool extract_content from crawl4ai-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "batch_crawl",
+      "server_name": "crawl4ai-mcp",
+      "description": "Tool batch_crawl from crawl4ai-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "get_repository",
+      "server_name": "github-mcp",
+      "description": "Tool get_repository from github-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "list_issues",
+      "server_name": "github-mcp",
+      "description": "Tool list_issues from github-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "create_issue",
+      "server_name": "github-mcp",
+      "description": "Tool create_issue from github-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "create_project",
+      "server_name": "fastapi-mcp",
+      "description": "Tool create_project from fastapi-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "generate_endpoint",
+      "server_name": "fastapi-mcp",
+      "description": "Tool generate_endpoint from fastapi-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "add_middleware",
+      "server_name": "fastapi-mcp",
+      "description": "Tool add_middleware from fastapi-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "run_tests",
+      "server_name": "pytest-mcp",
+      "description": "Tool run_tests from pytest-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "generate_test",
+      "server_name": "pytest-mcp",
+      "description": "Tool generate_test from pytest-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "get_coverage",
+      "server_name": "pytest-mcp",
+      "description": "Tool get_coverage from pytest-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "create_fixture",
+      "server_name": "pytest-mcp",
+      "description": "Tool create_fixture from pytest-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "run_specific_test",
+      "server_name": "pytest-mcp",
+      "description": "Tool run_specific_test from pytest-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "list_test_files",
+      "server_name": "pytest-mcp",
+      "description": "Tool list_test_files from pytest-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "validate_test_structure",
+      "server_name": "pytest-mcp",
+      "description": "Tool validate_test_structure from pytest-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "create_agent",
+      "server_name": "pydantic-ai-mcp",
+      "description": "Tool create_agent from pydantic-ai-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "run_agent",
+      "server_name": "pydantic-ai-mcp",
+      "description": "Tool run_agent from pydantic-ai-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "list_agents",
+      "server_name": "pydantic-ai-mcp",
+      "description": "Tool list_agents from pydantic-ai-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "get_agent_status",
+      "server_name": "pydantic-ai-mcp",
+      "description": "Tool get_agent_status from pydantic-ai-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "get_framework_status",
+      "server_name": "fastmcp-mcp",
+      "description": "Tool get_framework_status from fastmcp-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "register_server",
+      "server_name": "registry-mcp",
+      "description": "Tool register_server from registry-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "list_servers",
+      "server_name": "registry-mcp",
+      "description": "Tool list_servers from registry-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "get_server_status",
+      "server_name": "registry-mcp",
+      "description": "Tool get_server_status from registry-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "query_database",
+      "server_name": "surrealdb-mcp",
+      "description": "Tool query_database from surrealdb-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "execute_transaction",
+      "server_name": "surrealdb-mcp",
+      "description": "Tool execute_transaction from surrealdb-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "list_containers",
+      "server_name": "docker-mcp",
+      "description": "Tool list_containers from docker-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "start_container",
+      "server_name": "docker-mcp",
+      "description": "Tool start_container from docker-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "stop_container",
+      "server_name": "docker-mcp",
+      "description": "Tool stop_container from docker-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "create_container",
+      "server_name": "docker-mcp",
+      "description": "Tool create_container from docker-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "remove_container",
+      "server_name": "docker-mcp",
+      "description": "Tool remove_container from docker-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "configure_logfire",
+      "server_name": "logfire-mcp",
+      "description": "Tool configure_logfire from logfire-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "instrument_fastapi",
+      "server_name": "logfire-mcp",
+      "description": "Tool instrument_fastapi from logfire-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "instrument_sqlalchemy",
+      "server_name": "logfire-mcp",
+      "description": "Tool instrument_sqlalchemy from logfire-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "instrument_httpx",
+      "server_name": "logfire-mcp",
+      "description": "Tool instrument_httpx from logfire-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "create_span",
+      "server_name": "logfire-mcp",
+      "description": "Tool create_span from logfire-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "log_info",
+      "server_name": "logfire-mcp",
+      "description": "Tool log_info from logfire-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "log_error",
+      "server_name": "logfire-mcp",
+      "description": "Tool log_error from logfire-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "log_warning",
+      "server_name": "logfire-mcp",
+      "description": "Tool log_warning from logfire-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "get_metrics",
+      "server_name": "logfire-mcp",
+      "description": "Tool get_metrics from logfire-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "create_dashboard",
+      "server_name": "logfire-mcp",
+      "description": "Tool create_dashboard from logfire-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "set_user_context",
+      "server_name": "logfire-mcp",
+      "description": "Tool set_user_context from logfire-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    },
+    {
+      "name": "capture_exception",
+      "server_name": "logfire-mcp",
+      "description": "Tool capture_exception from logfire-mcp",
+      "use_count": 0,
+      "error_count": 0,
+      "last_used": ""
+    }
+  ]
+}
